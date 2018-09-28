@@ -1,0 +1,25 @@
+模拟登陆github
+
+一. 分析登陆过程
+1. 退出github，并清除cookies
+2. 打开https://github.com/login，打开开发者工具，将Preserve Log选上，表示显示持续日志
+3. 输入用户名和密码，登陆
+4. 在名字为session的请求中可看到Form Data和Response Headers。其中Form Data中包含commit，utf8, authenticity_token, login, password字段
+
+
+二. 提取出authenticity_token
+在退出到登陆页面后，查看元素搜索authenticity_token可找到它是一个隐藏元素
+selector.xpath('//div/input[2]/@value提取出来即可
+
+
+三. lxml.etree几种解析方法
+
+etree.fromstring()  # 用于解析字符串
+
+etree.HTML()        # 用于解析HTML对象
+
+etree.XML()         # 用于解析XML对象
+
+etree.parse()       # 用于解析文件类型的对象，parse{帕斯]=解析
+
+
